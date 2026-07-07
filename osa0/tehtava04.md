@@ -8,7 +8,7 @@ https://studies.cs.helsinki.fi/exampleapp/new_note
     server-->>browser: redirect to notes
     deactivate server
 
-    Note right of browser: The server redirects back to notes and the browser reloads the page.
+    Note right of browser: The server redirects back to notes and the browser reloads the page
     
     browser->>server: GET
 https://studies.cs.helsinki.fi/exampleapp/notes
