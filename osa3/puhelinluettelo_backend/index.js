@@ -2,7 +2,6 @@ const express = require('express')
 const app = express()
 const morgan = require('morgan')
 const date = new Date()
-const cors = require('cors')
 
 let persons = [
   {
@@ -27,11 +26,12 @@ let persons = [
   }
 ]
 
-app.use(cors())
 
 app.use(morgan('tiny'))
 
 app.use(express.json())
+
+app.use(express.static('dist'))
 
 app.get('/info', (request, response) => {
   response.send(`<p>Phonebook has info for ${persons.length} people <br>${date}</p>`
