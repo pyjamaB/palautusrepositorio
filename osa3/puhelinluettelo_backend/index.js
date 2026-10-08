@@ -3,7 +3,6 @@ const express = require('express')
 const Person = require('./models/person')
 const app = express()
 
-let persons = []
 const morgan = require('morgan')
 const date = new Date()
 
@@ -26,9 +25,9 @@ app.use(morgan('tiny'))
 
 app.get('/info', (request, response, next) => {
   Person.find({}).then(persons => {
-  response.send(`<p>Phonebook has info for ${persons.length} people <br>${date}</p>`)
+    response.send(`<p>Phonebook has info for ${persons.length} people <br>${date}</p>`)
   })
-  .catch(error => next(error))
+    .catch(error => next(error))
 })
 
 app.get('/api/persons', (request, response) => {
@@ -58,8 +57,8 @@ app.delete('/api/persons/:id', (request, response, next) => {
 })
 
 const generateId = () => {
-  const minCeiled = Math.ceil(1);
-  const maxFloored = Math.floor(1000);
+  const minCeiled = Math.ceil(1)
+  const maxFloored = Math.floor(1000)
   return String(Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled))
 }
 
@@ -72,10 +71,10 @@ app.post('/api/persons', (request, response, next) => {
   })
 
   person.save()
-  .then(savedPerson => {
-    response.json(savedPerson)
-  })
-  .catch(error => next(error))
+    .then(savedPerson => {
+      response.json(savedPerson)
+    })
+    .catch(error => next(error))
 })
 
 app.put('/api/persons/:id', (request, response, next) => {
